@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudClud</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon.png" />
+  <meta name="theme-color" content="#004080" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('tools')">Tools</button>
+    <button onclick="showPage('motivation')">Motivation</button>
+  </nav>
+
+  <main id="home" class="page">
+    <div class="hero">
+      <h1>Welcome to StudClud 📚</h1>
+      <p>Your all-in-one student support app</p>
+    </div>
+  </main>
+
+  <main id="tools" class="page hidden">
+    <h2>Study Tools</h2>
+    <div>
+      <h3>Pomodoro Timer</h3>
+      <button onclick="startPomodoro()">Start 25 min</button>
+      <p id="timerDisplay">25:00</p>
+    </div>
+    <div>
+      <h3>Quick Calculator</h3>
+      <input id="calcInput" type="text" placeholder="2+2*5" />
+      <button onclick="calculate()">=</button>
+      <p id="calcResult"></p>
+    </div>
+  </main>
+
+  <main id="motivation" class="page hidden">
+    <h2>How do you feel today?</h2>
+    <div class="emoji-select">
+      <span onclick="trackMood('😊')">😊</span>
+      <span onclick="trackMood('😐')">😐</span>
+      <span onclick="trackMood('😢')">😢</span>
+    </div>
+    <p id="moodResponse"></p>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(() => {
+        console.log("Service Worker registered!");
+      });
+    }
+  </script>
+</body>
+</html>
